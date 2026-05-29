@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>She Can Foundation - Ultimate</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f5f5f5;color:#333}
+.dark{background:#121212;color:#fff}
+nav{position:fixed;top:0;width:100%;display:flex;justify-content:space-between;padding:15px;background:#fff;z-index:999}
+.dark nav,.dark .card,.dark .box{background:#1e1e1e;color:#fff}
+.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(rgba(233,30,99,.8),rgba(106,27,154,.8)),url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1400') center/cover}
+section{padding:80px 10%}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card,.box{background:#fff;padding:20px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+button{padding:10px 15px;background:#e91e63;color:#fff;border:none;border-radius:8px;cursor:pointer}
+input,textarea,select{width:100%;padding:10px;margin:8px 0}
+.result{margin-top:10px;padding:10px;background:#fdf0f5}
+img.story{width:100%;height:220px;object-fit:cover;border-radius:8px}
+footer{text-align:center;padding:20px;background:#222;color:#fff}
+</style>
+</head>
+<body>
+<nav><b>She Can Foundation</b><button onclick="toggleTheme()">🌙</button></nav>
+
+<div class="hero"><div><h1>Empowering Women Through Education & Innovation</h1><p>Ultimate AI + NGO Showcase</p></div></div>
+
+<section><h2>Impact Dashboard</h2><div class="grid">
+<div class="card"><h3 id="c1">0</h3><p>Women Empowered</p></div>
+<div class="card"><h3 id="c2">0</h3><p>Workshops</p></div>
+<div class="card"><h3 id="c3">0</h3><p>Volunteers</p></div>
+</div></section>
+
+<section><h2>🤖 AI Mentor</h2><div class="box"><p id="mentorText">Click below</p><button onclick="mentor()">Advice</button><button onclick="speak()">🎤 Voice</button></div></section>
+
+<section><h2>🚀 Career Roadmap</h2><div class="box"><select id="career"><option>AI Engineer</option><option>Web Developer</option><option>Data Scientist</option></select><button onclick="roadmap()">Generate</button><div id="roadmapResult" class="result"></div></div></section>
+
+<section><h2>📄 Resume Analyzer</h2><div class="box"><textarea id="resume"></textarea><button onclick="analyze()">Analyze</button><div id="resumeResult" class="result"></div></div></section>
+
+<section><h2>🔥 Learning Streak</h2><div class="box"><h3 id="streak">0 Days</h3><button onclick="streakUp()">Mark Learning</button></div></section>
+
+<section><h2>🎯 Opportunity Finder</h2><div class="box"><button onclick="opp()">Find</button><div id="opp" class="result"></div></div></section>
+
+<section><h2>🌱 Impact Calculator</h2><div class="box"><input id="hours" type="number" placeholder="Hours"><button onclick="impact()">Calculate</button><div id="impactResult" class="result"></div></div></section>
+
+<section><h2>📅 30 Day Challenge</h2><div class="box"><button onclick="challenge()">Generate</button><div id="challengeResult" class="result"></div></div></section>
+
+<section><h2>🎓 Certificate Generator</h2><div class="box"><input id="name"><button onclick="cert()">Generate</button><div id="certResult" class="result"></div></div></section>
+
+<section><h2>🏅 Achievement System</h2><div class="box"><button onclick="badge()">Unlock</button><div id="badgeResult" class="result"></div></div></section>
+
+<section><h2>📊 Skill Progress Tracker</h2><div class="box"><select id="skill"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select><button onclick="progress()">Check</button><div id="progressResult" class="result"></div></div></section>
+
+<section><h2>💡 Daily AI Tip</h2><div class="box" id="tip"></div></section>
+
+<section><h2>👩‍💻 Women In Tech</h2><div class="grid"><div class="card">Ada Lovelace</div><div class="card">Fei-Fei Li</div><div class="card">Radia Perlman</div></div></section>
+
+<section><h2>✨ Success Stories</h2><div class="grid">
+<div class="card"><img class="story" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600"><h3>Priya</h3></div>
+<div class="card"><img class="story" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600"><h3>Ananya</h3></div>
+<div class="card"><img class="story" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600"><h3>Sneha</h3></div>
+</div></section>
+
+<section><h2>🗺️ NGO Timeline</h2><div class="box">2023 Started<br>2024 Expanded<br>2025 AI Initiative<br>2026 5000+ Women Empowered</div></section>
+
+<section><h2>Volunteer Form</h2><div class="box"><input placeholder="Name"><input placeholder="Email"><textarea placeholder="Why volunteer?"></textarea><button>Submit</button></div></section>
+
+<footer>© 2026 She Can Foundation</footer>
+
+<script>
+function toggleTheme(){document.body.classList.toggle('dark')}
+function mentor(){let a=['Believe in yourself','Keep learning','Leadership starts with action'];mentorText.innerText=a[Math.floor(Math.random()*a.length)]}
+function speak(){speechSynthesis.speak(new SpeechSynthesisUtterance(mentorText.innerText))}
+function roadmap(){roadmapResult.innerText='Learn → Projects → Portfolio → Internship → Career'}
+function analyze(){resumeResult.innerText='Strong profile. Recommended skill: Machine Learning'}
+let s=0; function streakUp(){s++;streak.innerText=s+' Days'}
+function opp(){oppResult=['AI Internship','Web Internship','Open Source'];document.getElementById('opp').innerText=oppResult[Math.floor(Math.random()*3)]}
+function impact(){let h=+hours.value||0;impactResult.innerText='Approx '+(h*3)+' people impacted'}
+function challenge(){challengeResult.innerText='Day1 HTML ... Day30 Portfolio Launch'}
+function cert(){certResult.innerText='Certificate awarded to '+document.getElementById('name').value}
+function badge(){let b=['Growth Seeker','AI Explorer','Future Innovator'];badgeResult.innerText=b[Math.floor(Math.random()*b.length)]}
+function progress(){let v=skill.value;progressResult.innerText=v==='Beginner'?'30% Ready':v==='Intermediate'?'70% Ready':'95% Ready'}
+tip.innerText='Today\'s AI Tip: Build one project every month.';
+function anim(id,end){let c=0;let t=setInterval(()=>{c+=Math.ceil(end/50);document.getElementById(id).innerText=Math.min(c,end)+'+';if(c>=end)clearInterval(t)},30)}
+anim('c1',5000);anim('c2',120);anim('c3',300);
+</script>
+</body></html>
